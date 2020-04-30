@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>xy-format document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="./themes/buble.css">
+  <style>
+    /* 结构颜色 */
+    h2 .anchor span {
+      color: #2674ba;
+    }
+    h3 .anchor span {
+      color: #ee9900;
+    }
+    .markdown-section p > strong{
+      color: #a94442;
+    }
+    .cover.show{
+      background: linear-gradient(to right top, #AFF8FE 0%, #B5ECFE 40%,#B4DFFE 100%);
+    }
+    section.cover h1{
+      font-size: 60px;
+      font-weight: bold;
+    }
+    section.cover h1 span{
+      color:#0078D4;
+    }
+    section.cover h2 a span{
+      color:#0078D4;
+      font-size: 36px;
+    }
+    /* 导航选中 */
+    .sidebar li.active{
+      background-color: transparent;
+    }
+
+    .sidebar li.active a{
+      color:#666;
+    }
+
+    .sidebar li.active>a{
+      color:#2674ba;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">加载中</div>
+  <script>
+    function fixTitles(){
+      var links = document.querySelectorAll('.cover-main h1>a,.cover-main h2>a')
+      for(var i=0;i<links.length;i++){
+        links[i].setAttribute('href', 'javascript:;')
+      }
+    }
+    var fixer = null
+    var fixer2 = null
+    var fixer3 = null
+    var fixer4 = null
+    var fix = function(){
+      var links = document.querySelectorAll('a:not([fixed])')
+
+      if(links.length<=0){
+        clearInterval(fixer)
+        return
+      }
+
+      links.forEach(function(a){
+        if(/[?&]_blank[&]?/.test(a.href)){
+          a.setAttribute('target','_blank')
+          a.setAttribute('href',a.getAttribute('href').replace(/^#/,''))
+        }
+        a.setAttribute('fixed','')
+      })
+    }
+    var fix2 = function(){
+      var navs = document.querySelectorAll('.app-nav>ul>li>a:not([fixed2])')
+
+      if(navs.length<=0){
+        clearInterval(fixer2)
+        return
+      }
+
+      navs.forEach(function(a){
+        var href = a.getAttribute('href').replace(/(?=#\/[#\/]+)/,'')
+        if(href!=='#/'){
+          var route = location.hash.match(/^(#\/[^#\/]+)(.*)/)
+          var path = href.match(/^(#\/[^#\/]+)(.*)/)
+          if(route&&path&&route[1]===path[1]){
+            navs.forEach(function(a){
+              a.style.color = '#34495e'
+              a.style.borderBottom = 'none'
+            })
+            a.style.color = 'var(--theme-color,#0074d9)'
+            a.style.borderBottom = '2px solid var(--theme-color,#0074d9)'
+          }
+        }
+        a.setAttribute('fixed2','')
+      })
+    }
+    window.$docsify = {
+      search: {
+        placeholder: '搜索',
+        noData: '没有找到相关内容',
+        paths: ['/', '/api'],
+        maxAge: 10000
+      },
+      loadSidebar: true,
+      loadNavbar: true,
+      name: 'xy-format',
+      // nameLink: 'https://property.be-linker.com/pc',
+      subMaxLevel: 3,
+      // repo: ''
+      coverpage: true,
+      // onlyCover: true,
+      auto2top: true,
+      // logo: '/imgs/logo-simple.png',
+      // autoHeader: true,
+      // mergeNavbar: true,
+      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
+      alias: {
+        '/_sidebar.md': '/guide/_sidebar.md',
+        '/':'/guide/README.md',
+        '/api':'/api/README.md'
+      },
+      //
+      //
+      copyCode: {
+        buttonText : '复制',
+        errorText  : '错误',
+        successText: '已复制'
+      },
+      // routerMode: 'history',
+      pagination: {
+        previousText: '上一章节',
+        nextText: '下一章节',
+        // crossChapter: true,
+        // crossChapterText: true,
+      },
+      markdown: {
+
+      },
+      plugins: [
+        function (hook, vm) {
+          hook.beforeEach(function(content) {
+            return content.replace(/<a[^<>]*>[^<>]*<\/a>/g,'')
+          })
+          // var footer = [
+          //   // '<hr/>',
+          //   '<footer style="text-align:center">',
+          //   '<div>',
+          //   '<span>版权所有 © 2015 珠海市住房和城乡建设局</span>',
+          //   '<span><a href="http://www.beian.miit.gov.cn">ICP备10087398号</a></span>',
+          //   '</div><div>',
+          //   '<span>联系电话：(0756)2222483 地址：珠海市海城路32号</span>',
+          //   '</div><div>',
+          //   '<span>粤公网安备 44040202000518号</span>',
+          //   '</div>',
+          //   '</footer>'
+          // ].join('')
+          hook.afterEach(function (html) {
+            return html // + footer
+          })
+          hook.doneEach(function() {
+            fixer3 = setInterval(function() {
+              fix()
+            }, 200);
+            fixer4 = setInterval(function() {
+              fix2()
+            }, 200);
+          })
+          hook.ready(function() {
+            fixTitles()
+
+            fixer = setInterval(function() {
+              fix()
+            }, 200);
+
+            fixer2 = setInterval(function() {
+              fix2()
+            }, 200);
+          })
+        }
+      ]
+    }
+  </script>
+  <script src="./js/docsify.min.js"></script>
+  <script src="./js/search.min.js"></script>
+  <script src="./js/zoom-image.min.js"></script>
+  <script src="./js/docsify-copy-code.min.js"></script>
+  <script src="./js/docsify-pagination.min.js"></script>
+</body>
+</html>
