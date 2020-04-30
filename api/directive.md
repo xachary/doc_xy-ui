@@ -2,7 +2,7 @@
 
 ## xy-btn-act - 按钮动画
 
-[效果示例](/demo/btn-act.html?_blank)
+[效果示例](https://xachary.github.io/demo_xy-ui/demo/btn-act.html?_blank)
 
 ### 代码示例
 
@@ -61,7 +61,7 @@ wave|CSS色值|是|点击按钮背景水波纹效果
 
 ## xy-pull-refresh - 下拉刷新
 
-[效果示例](/demo/pull-refresh.html?_blank)
+[效果示例](https://xachary.github.io/demo_xy-ui/demo/pull-refresh.html?_blank)
 
 ### 代码示例
 
@@ -99,7 +99,7 @@ function|结束效果方法
 
 ## xy-keep-top - 滚动保持置顶
 
-[效果示例](/demo/keep-top.html?_blank)
+[效果示例](https://xachary.github.io/demo_xy-ui/demo/keep-top.html?_blank)
 
 ### 代码示例
 
@@ -113,7 +113,7 @@ function|结束效果方法
 
 ## xy-btn-loading - 按钮加载效果
 
-[效果示例](/demo/btn-loading.html?_blank)
+[效果示例](https://xachary.github.io/demo_xy-ui/demo/btn-loading.html?_blank)
 
 ### 代码示例
 
@@ -159,7 +159,7 @@ keep|保持当前按钮宽度不变
 
 ## xy-loading - 内容加载过度动画
 
-[效果示例](/demo/loading.html?_blank)
+[效果示例](https://xachary.github.io/demo_xy-ui/demo/loading.html?_blank)
 
 ### 代码示例
 

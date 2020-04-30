@@ -1,6 +1,6 @@
 ## xy-pop - alert - 提示框
 
-[示例地址](/demo/pop.html?_blank)
+[示例地址](https://xachary.github.io/demo_xy-ui/demo/pop.html?_blank)
 
 ## xy-pop - confirm - 确认框
 
