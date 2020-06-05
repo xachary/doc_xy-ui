@@ -3,11 +3,11 @@
 ## npm
 
 ``` bash
-npm install -S @blk/xy-ui
+npm install -S @xachary/xy-ui
 ```
 
 ``` javascript
-import xyui from '@blk/xy-ui'
+import xyui from '@xachary/xy-ui'
 Vue.use(xyui)
 ```
 
